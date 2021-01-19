@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
 const cors = require('cors');
 
 const routes = require('./routes')
@@ -13,4 +12,4 @@ app.use('/api',routes);
 
 require('./database')
 
-app.listen(PORT , ()=>console.log(`Server on port ${PORT}`))
+app.listen(process.env.PORT || 3000 , ()=>console.log(`Server on port ${PORT}`))
