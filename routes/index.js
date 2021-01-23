@@ -68,4 +68,14 @@ router.patch('/newRecord',verifyToken,async(req,res)=>{
     
 
 })
+
+router.get('/bestScore',async(req,res)=>{
+    try {
+        const bestUser = await user.find().sort({record : -1}).limit(1)  // give me the max
+    res.send(bestUser).status(200);
+    } catch (error) {
+        res.send({message:error}).status(400);
+    }
+    
+})
 module.exports = router;
